@@ -30,6 +30,7 @@ struct DiceView: View {
                     .foregroundColor(.red)
             }
         }
+        .padding()
         .rotation3DEffect(.degrees(self.angleOfDice), axis: (x: 1, y: 0, z: 0))
         .animation(Animation.default.speed(0.3))
         .onAppear {

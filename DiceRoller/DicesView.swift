@@ -34,14 +34,37 @@ struct DicesView: View {
             VStack {
                 Text("Tap to roll dices")
                     .font(.largeTitle)
-                    .padding(8)
+                    .padding(10)
+                    .frame(height: 50)
                     .background(Color.black.opacity(0.7))
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .padding(.top, 20)
                 Spacer()
             }
+            
+            // MARK: Options button
+            VStack {
+                HStack {
+                    Button.init(action: {
+                        print("d")
+                    }) {
+                        Image(systemName: "gear")
+                        .font(.largeTitle)
+                        .padding(10)
+                        .frame(height: 50)
+                        .background(Color.black.opacity(0.7))
+                        .foregroundColor(.white)
+                        .cornerRadius(20)
+                        .padding(.top, 20)
+                        .padding(.leading, 10)
+                    }
+                    Spacer()
+                }
+                Spacer()
+            }
         }
+    
     }
 }
 
