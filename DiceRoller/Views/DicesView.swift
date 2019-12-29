@@ -39,6 +39,7 @@ struct DicesView: View {
                 // MARK: Background
                 Rectangle()
                     .fill(Color.green)
+                    .edgesIgnoringSafeArea(.all)
                 
                 // MARK: Dice list
                 HStack {

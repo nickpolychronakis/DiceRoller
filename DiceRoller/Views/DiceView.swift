@@ -23,6 +23,7 @@ struct DiceView: View {
                     .frame(width:sizeOfDices, height: sizeOfDices)
                     .shadow(radius: 10)
                     .foregroundColor(.white)
+                    .animation(.none)
 
                 // MARK: Dice number
                 Text("\(diceNumber)")
