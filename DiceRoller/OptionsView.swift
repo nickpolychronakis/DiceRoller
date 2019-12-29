@@ -12,7 +12,7 @@ struct OptionsView: View {
     @Binding var numberOfDices: Int
     @Binding var numberOfSides: Int
     
-    let optionsForSides = [4,6,8,10,12,20,100]
+    let optionsForSides = [4,6,8,10,12,20,45,100]
     @State private var selectedNumberOfSides = 1
     
     let optionsForDices = [1,2,3]
@@ -24,27 +24,37 @@ struct OptionsView: View {
                 .fill(Color.orange)
                 .edgesIgnoringSafeArea(.all)
 
-            VStack {
-                // MARK: Top label
-                Text("Options")
-                    .labelFormatter()
-
+            VStack(spacing: 10) {
                 
                 // Number of sides
+                Text("Number Of Sides")
+                    .labelFormatter()
                 Picker(selection: $selectedNumberOfSides, label: Text("Sides").fontWeight(.bold)) {
                     ForEach(0..<optionsForSides.count) { index in
                         Text("\(self.optionsForSides[index])")
+                        .font(.largeTitle)
                         .fontWeight(.bold)
+                        .foregroundColor(.black)
                     }
                 }
-                
+                .labelsHidden()
+                .background(Color.black.opacity(0.2))
+                .cornerRadius(30)
+
                 // Number of dices
+                Text("Number Of Dices")
+                    .labelFormatter()
                 Picker.init(selection: $selectedNumberOfDices, label: Text("Dices").fontWeight(.bold)) {
                     ForEach(0..<optionsForDices.count) { index in
                         Text("\(self.optionsForDices[index])")
+                        .font(.largeTitle)
                         .fontWeight(.bold)
+                        .foregroundColor(.black)
                     }
                 }
+                .labelsHidden()
+                .background(Color.black.opacity(0.2))
+                .cornerRadius(30)
                 
                 Spacer()
  
