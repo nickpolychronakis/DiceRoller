@@ -46,7 +46,7 @@ struct DicesView: View {
                     ForEach(self.diceArray, id: \.self) { diceNum in
                         DiceView(diceNumber: self.timerDifference < 5 ? Array(1...self.numberOfSides).shuffled()[self.timerDifference] : diceNum)
                         // τροποποιώ το frame για να γίνεται το animation απο το κάτω μέρος της οθόνης
-                        .frame(height: geo.size.height)
+                        .frame(height: geo.size.height/2)
                         .id(self.idAfterTouch) //id changes each time user taps the screen
                         .rotation3DEffect(.degrees(self.angleOfDice), axis: (x: 1, y: 0, z: 0))
                         .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .scale))
