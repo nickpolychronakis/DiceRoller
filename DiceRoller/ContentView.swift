@@ -12,10 +12,13 @@ struct ContentView: View {
     /// The numbers for the dices
     @State private var diceArray = [Int]()
     
+    @State private var numberOfDices = 2
+    @State private var numberOfSides = 6
+        
     var body: some View {
         TabView {
             // MARK: First View
-            DicesView(arrayOfDices: diceArray)
+            DicesView(arrayOfDices: diceArray, numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides)
                 .tabItem {
                     Image(systemName: "dot.square.fill")
                     Text("Dice")
@@ -37,7 +40,7 @@ struct ContentView: View {
     // MARK: - View tapped
     /// Executed when the view is tapped
     func viewIsTapped() {
-        rollDices(numberOfDices: 2, numberOfSides: 6)
+        rollDices(numberOfDices: self.numberOfDices, numberOfSides: self.numberOfSides)
     }
     
     

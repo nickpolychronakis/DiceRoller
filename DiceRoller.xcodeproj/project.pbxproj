@@ -18,6 +18,8 @@
 		4EAFDF4E23B8B70E0022F107 /* DiceRollerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF4D23B8B70E0022F107 /* DiceRollerUITests.swift */; };
 		4EAFDF5C23B8BB970022F107 /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF5B23B8BB970022F107 /* DiceView.swift */; };
 		4EAFDF5E23B8BFD20022F107 /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF5D23B8BFD20022F107 /* DicesView.swift */; };
+		4EAFDF6023B8D9D30022F107 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */; };
+		4EAFDF6223B8E21F0022F107 /* LabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		4EAFDF4F23B8B70E0022F107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EAFDF5B23B8BB970022F107 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
 		4EAFDF5D23B8BFD20022F107 /* DicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesView.swift; sourceTree = "<group>"; };
+		4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
+		4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 				4EAFDF2F23B8B70C0022F107 /* ContentView.swift */,
 				4EAFDF5D23B8BFD20022F107 /* DicesView.swift */,
 				4EAFDF5B23B8BB970022F107 /* DiceView.swift */,
+				4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */,
+				4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */,
 				4EAFDF3123B8B70D0022F107 /* Assets.xcassets */,
 				4EAFDF3623B8B70D0022F107 /* LaunchScreen.storyboard */,
 				4EAFDF3923B8B70D0022F107 /* Info.plist */,
@@ -279,6 +285,8 @@
 				4EAFDF2923B8B70C0022F107 /* AppDelegate.swift in Sources */,
 				4EAFDF2E23B8B70C0022F107 /* DiceRoller.xcdatamodeld in Sources */,
 				4EAFDF5C23B8BB970022F107 /* DiceView.swift in Sources */,
+				4EAFDF6223B8E21F0022F107 /* LabelFormatter.swift in Sources */,
+				4EAFDF6023B8D9D30022F107 /* OptionsView.swift in Sources */,
 				4EAFDF5E23B8BFD20022F107 /* DicesView.swift in Sources */,
 				4EAFDF3023B8B70C0022F107 /* ContentView.swift in Sources */,
 				4EAFDF2B23B8B70C0022F107 /* SceneDelegate.swift in Sources */,

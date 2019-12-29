@@ -13,6 +13,11 @@ struct DicesView: View {
     // the array with the numbers the dices will appear
     let arrayOfDices: [Int]
     
+    @Binding var numberOfDices: Int
+    @Binding var numberOfSides: Int
+    
+    @State private var showSheet = false
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -35,13 +40,7 @@ struct DicesView: View {
                 // MARK: Top label
                 VStack {
                     Text("Tap to roll dices")
-                        .font(.largeTitle)
-                        .padding(10)
-                        .frame(height: 50)
-                        .background(Color.black.opacity(0.7))
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
-                        .padding(.top, 20)
+                        .labelFormatter()
                     Spacer()
                 }
                 
@@ -49,21 +48,18 @@ struct DicesView: View {
                 VStack {
                     HStack {
                         Button.init(action: {
-                            print("d")
+                            self.showSheet = true
                         }) {
                             Image(systemName: "gear")
-                            .font(.largeTitle)
-                            .padding(10)
-                            .frame(height: 50)
-                            .background(Color.black.opacity(0.7))
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .padding(.top, 20)
+                            .labelFormatter()
                             .padding(.leading, 10)
                         }
                         Spacer()
                     }
                     Spacer()
+                }
+                .sheet(isPresented: self.$showSheet) {
+                    OptionsView(numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides)
                 }
             }
         }
@@ -72,6 +68,6 @@ struct DicesView: View {
 
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
-        DicesView(arrayOfDices: [5,6,7,8])
+        DicesView(arrayOfDices: [5,6,7],numberOfDices: .constant(2), numberOfSides: .constant(6))
     }
 }
