@@ -29,6 +29,10 @@ struct DicesView: View {
     /// The history array
     @Binding var historyArray: [[Int]]
     
+    @State private var timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
+    
+    @State private var timerDifference = 0
+    
     // MARK: - BODY
     var body: some View {
         GeometryReader { geo in
@@ -40,7 +44,7 @@ struct DicesView: View {
                 // MARK: Dice list
                 HStack {
                     ForEach(self.diceArray, id: \.self) { diceNum in
-                        DiceView(diceNumber: diceNum)
+                        DiceView(diceNumber: self.timerDifference < 5 ? Array(1...self.numberOfSides).shuffled()[self.timerDifference] : diceNum)
                         // τροποποιώ το frame για να γίνεται το animation απο το κάτω μέρος της οθόνης
                         .frame(height: geo.size.height)
                         .id(self.idAfterTouch) //id changes each time user taps the screen
@@ -49,6 +53,9 @@ struct DicesView: View {
                         .animation(Animation.easeOut.speed(0.3))
                         .padding()
                     }
+                }
+                .onReceive(self.timer) { (publisher) in
+                    self.timerDifference += 1
                 }
                 
                 // MARK: Top label
@@ -78,13 +85,16 @@ struct DicesView: View {
                 }
                 
                 // MARK:  Bottom Label
-                if self.totalRolled() > 0 {
+                if self.totalRolled() > 0 && self.timerDifference > 4 && self.timerDifference < 15 {
                     VStack {
                         Spacer()
                         Text("Total: \(self.totalRolled())")
                             .labelFormatter()
-                            .padding(.bottom, 20)
+                            .padding(.bottom, 100)
                     }
+                    .zIndex(2)
+                    .transition(.move(edge: .bottom))
+                    .animation(.default)
                 }
             }
         }
@@ -104,6 +114,7 @@ struct DicesView: View {
     // MARK: - View tapped
     /// Executed when the view is tapped
     func viewIsTapped() {
+        self.timerDifference = 0
         self.idAfterTouch += 1
         rollDices(numberOfDices: self.numberOfDices, numberOfSides: self.numberOfSides)
         withAnimation(Animation.easeOut.speed(0.3)) {
