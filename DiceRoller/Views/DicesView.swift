@@ -11,16 +11,25 @@ import SwiftUI
 /// A View that draws as many Dices as you want, with a green background
 struct DicesView: View {
     // the array with the numbers the dices will appear
-    let arrayOfDices: [Int]
+    @State private var diceArray: [Int] = [Int]()
     
+    // Number of dices and how many sides they will have
     @Binding var numberOfDices: Int
     @Binding var numberOfSides: Int
     
-    /// The id for the diceView. It increments after each touch to the screen.
-    @Binding var idAfterTouch: Int
+    /// It changes id of dicesView incrementaly after each touch
+    @State private var idAfterTouch = 0
     
+    /// Show sheet
     @State private var showSheet = false
     
+    /// the angle of rotation of the dice
+    @State private var angleOfDice: Double = 0.0
+    
+    /// The history array
+    @Binding var historyArray: [[Int]]
+    
+    // MARK: - BODY
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -30,13 +39,15 @@ struct DicesView: View {
                 
                 // MARK: Dice list
                 HStack {
-                    ForEach(self.arrayOfDices, id: \.self) { diceNum in
+                    ForEach(self.diceArray, id: \.self) { diceNum in
                         DiceView(diceNumber: diceNum)
                         // τροποποιώ το frame για να γίνεται το animation απο το κάτω μέρος της οθόνης
                         .frame(height: geo.size.height)
                         .id(self.idAfterTouch) //id changes each time user taps the screen
+                        .rotation3DEffect(.degrees(self.angleOfDice), axis: (x: 1, y: 0, z: 0))
                         .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .scale))
-                        .animation(Animation.easeOut.speed(0.2))
+                        .animation(Animation.easeOut.speed(0.3))
+                        .padding()
                     }
                 }
                 
@@ -71,28 +82,60 @@ struct DicesView: View {
                     VStack {
                         Spacer()
                         Text("Total: \(self.totalRolled())")
-                        .labelFormatter()
+                            .labelFormatter()
                             .padding(.bottom, 20)
                     }
                 }
             }
         }
+        .onTapGesture(perform: viewIsTapped)
     }
+    
+    // MARK: - FUNCTIONS
     
     // MARK: - Add the dices
     // Returns the added number of dices
     func totalRolled() -> Int {
-        return self.arrayOfDices.reduce(0) { (result, int) in
+        return self.diceArray.reduce(0) { (result, int) in
             return result + int
         }
+    }
+    
+    // MARK: - View tapped
+    /// Executed when the view is tapped
+    func viewIsTapped() {
+        self.idAfterTouch += 1
+        rollDices(numberOfDices: self.numberOfDices, numberOfSides: self.numberOfSides)
+        withAnimation(Animation.easeOut.speed(0.3)) {
+            self.angleOfDice += 1080
+        }
+        self.historyArray.insert(self.diceArray, at: 0)
+    }
+    
+    
+    // MARK: - Roll the dices.
+    /// Roll the dices
+    func rollDices(numberOfDices: Int, numberOfSides: Int) {
+        self.diceArray = []
+        for _ in 0..<numberOfDices {
+            self.diceArray
+                .append(randomDiceNumber(numberOfSides: numberOfSides))
+        }
+    }
+    
+    // MARK: - Random Dice Number
+    /// Creates a random number for a dice. The dice can have as many sides as we want. PURE FUNCTION
+    func randomDiceNumber(numberOfSides: Int) -> Int {
+        guard numberOfSides > 1 else { return 1}
+        return Array(1...numberOfSides).shuffled().first!
     }
 }
 
 
 
-
+// MARK: - PREVIEW
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
-        DicesView(arrayOfDices: [5,6,7],numberOfDices: .constant(2), numberOfSides: .constant(6), idAfterTouch: .constant(1))
+        DicesView(numberOfDices: .constant(2), numberOfSides: .constant(6), historyArray: .constant([[1,2,3],[4,5,6]]))
     }
 }

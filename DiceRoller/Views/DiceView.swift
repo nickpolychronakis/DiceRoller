@@ -14,8 +14,6 @@ struct DiceView: View {
     let diceNumber: Int
     // The size of the dice
     let sizeOfDices: CGFloat = 80.0
-    // the angle of the rotation of the dices
-    @State private var angleOfDice: Double = 0.0
     
     var body: some View {
         VStack {
@@ -31,13 +29,6 @@ struct DiceView: View {
                     .font(.largeTitle)
                     .foregroundColor(.red)
             }
-        }
-        .padding()
-        .rotation3DEffect(.degrees(self.angleOfDice), axis: (x: 1, y: 0, z: 0))
-        .animation(Animation.default.speed(0.3))
-        .onAppear {
-            // MARK: Rotate dice
-            self.angleOfDice += 1080
         }
     }
 

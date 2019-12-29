@@ -116,11 +116,7 @@
 				4EAFDF6523B8EF5A0022F107 /* Log */,
 				4EAFDF2823B8B70C0022F107 /* AppDelegate.swift */,
 				4EAFDF2A23B8B70C0022F107 /* SceneDelegate.swift */,
-				4EAFDF2F23B8B70C0022F107 /* ContentView.swift */,
-				4EAFDF5D23B8BFD20022F107 /* DicesView.swift */,
-				4EAFDF5B23B8BB970022F107 /* DiceView.swift */,
-				4EAFDF6323B8ED000022F107 /* HistoryView.swift */,
-				4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */,
+				4EDB629623B9160900F4E2DD /* Views */,
 				4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */,
 				4EAFDF3123B8B70D0022F107 /* Assets.xcassets */,
 				4EAFDF3623B8B70D0022F107 /* LaunchScreen.storyboard */,
@@ -155,6 +151,18 @@
 				4EAFDF4F23B8B70E0022F107 /* Info.plist */,
 			);
 			path = DiceRollerUITests;
+			sourceTree = "<group>";
+		};
+		4EDB629623B9160900F4E2DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4EAFDF2F23B8B70C0022F107 /* ContentView.swift */,
+				4EAFDF5D23B8BFD20022F107 /* DicesView.swift */,
+				4EAFDF5B23B8BB970022F107 /* DiceView.swift */,
+				4EAFDF6323B8ED000022F107 /* HistoryView.swift */,
+				4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
