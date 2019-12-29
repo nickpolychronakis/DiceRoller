@@ -17,11 +17,14 @@ struct ContentView: View {
     
     @State private var numberOfDices = 2
     @State private var numberOfSides = 6
+    
+    /// It changes id of dicesView incrementaly after each touch
+    @State private var idAfterTouch = 0
         
     var body: some View {
         TabView {
             // MARK: First View
-            DicesView(arrayOfDices: diceArray, numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides)
+            DicesView(arrayOfDices: diceArray, numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides, idAfterTouch: $idAfterTouch)
                 .tabItem {
                     Image(systemName: "dot.square.fill")
                         .imageScale(.large)
@@ -45,6 +48,7 @@ struct ContentView: View {
     // MARK: - View tapped
     /// Executed when the view is tapped
     func viewIsTapped() {
+        self.idAfterTouch += 1
         rollDices(numberOfDices: self.numberOfDices, numberOfSides: self.numberOfSides)
         self.historyArray.append(self.diceArray)
     }

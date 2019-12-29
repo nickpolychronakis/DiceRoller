@@ -16,6 +16,9 @@ struct DicesView: View {
     @Binding var numberOfDices: Int
     @Binding var numberOfSides: Int
     
+    /// The id for the diceView. It increments after each touch to the screen.
+    @Binding var idAfterTouch: Int
+    
     @State private var showSheet = false
     
     var body: some View {
@@ -31,7 +34,7 @@ struct DicesView: View {
                         DiceView(diceNumber: diceNum)
                         // τροποποιώ το frame για να γίνεται το animation απο το κάτω μέρος της οθόνης
                         .frame(height: geo.size.height)
-                        .id(UUID())
+                        .id(self.idAfterTouch) //id changes each time user taps the screen
                         .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .scale))
                         .animation(Animation.easeOut.speed(0.2))
                     }
@@ -63,6 +66,7 @@ struct DicesView: View {
                     OptionsView(numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides)
                 }
                 
+                // MARK:  Bottom Label
                 if self.totalRolled() > 0 {
                     VStack {
                         Spacer()
@@ -89,6 +93,6 @@ struct DicesView: View {
 
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
-        DicesView(arrayOfDices: [5,6,7],numberOfDices: .constant(2), numberOfSides: .constant(6))
+        DicesView(arrayOfDices: [5,6,7],numberOfDices: .constant(2), numberOfSides: .constant(6), idAfterTouch: .constant(1))
     }
 }
