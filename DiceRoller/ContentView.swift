@@ -12,6 +12,9 @@ struct ContentView: View {
     /// The numbers for the dices
     @State private var diceArray = [Int]()
     
+    /// The history array
+    @State private var historyArray = [[Int]]()
+    
     @State private var numberOfDices = 2
     @State private var numberOfSides = 6
         
@@ -27,7 +30,7 @@ struct ContentView: View {
                 .onTapGesture(perform: viewIsTapped)
 
             // MARK: Second View
-            Text("View2")
+            HistoryView(historyArray: $historyArray)
                 .tabItem {
                     Image(systemName: "clock.fill")
                     Text("History")
@@ -41,6 +44,7 @@ struct ContentView: View {
     /// Executed when the view is tapped
     func viewIsTapped() {
         rollDices(numberOfDices: self.numberOfDices, numberOfSides: self.numberOfSides)
+        self.historyArray.append(self.diceArray)
     }
     
     

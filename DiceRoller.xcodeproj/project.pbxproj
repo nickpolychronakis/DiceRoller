@@ -20,6 +20,8 @@
 		4EAFDF5E23B8BFD20022F107 /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF5D23B8BFD20022F107 /* DicesView.swift */; };
 		4EAFDF6023B8D9D30022F107 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */; };
 		4EAFDF6223B8E21F0022F107 /* LabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */; };
+		4EAFDF6423B8ED000022F107 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAFDF6323B8ED000022F107 /* HistoryView.swift */; };
+		4EAFDF6623B8EF5A0022F107 /* Log in Resources */ = {isa = PBXBuildFile; fileRef = 4EAFDF6523B8EF5A0022F107 /* Log */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		4EAFDF5D23B8BFD20022F107 /* DicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesView.swift; sourceTree = "<group>"; };
 		4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFormatter.swift; sourceTree = "<group>"; };
+		4EAFDF6323B8ED000022F107 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		4EAFDF6523B8EF5A0022F107 /* Log */ = {isa = PBXFileReference; lastKnownFileType = text; path = Log; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +113,13 @@
 		4EAFDF2723B8B70C0022F107 /* DiceRoller */ = {
 			isa = PBXGroup;
 			children = (
+				4EAFDF6523B8EF5A0022F107 /* Log */,
 				4EAFDF2823B8B70C0022F107 /* AppDelegate.swift */,
 				4EAFDF2A23B8B70C0022F107 /* SceneDelegate.swift */,
 				4EAFDF2F23B8B70C0022F107 /* ContentView.swift */,
 				4EAFDF5D23B8BFD20022F107 /* DicesView.swift */,
 				4EAFDF5B23B8BB970022F107 /* DiceView.swift */,
+				4EAFDF6323B8ED000022F107 /* HistoryView.swift */,
 				4EAFDF5F23B8D9D30022F107 /* OptionsView.swift */,
 				4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */,
 				4EAFDF3123B8B70D0022F107 /* Assets.xcassets */,
@@ -256,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAFDF3823B8B70D0022F107 /* LaunchScreen.storyboard in Resources */,
+				4EAFDF6623B8EF5A0022F107 /* Log in Resources */,
 				4EAFDF3523B8B70D0022F107 /* Preview Assets.xcassets in Resources */,
 				4EAFDF3223B8B70D0022F107 /* Assets.xcassets in Resources */,
 			);
@@ -289,6 +296,7 @@
 				4EAFDF6023B8D9D30022F107 /* OptionsView.swift in Sources */,
 				4EAFDF5E23B8BFD20022F107 /* DicesView.swift in Sources */,
 				4EAFDF3023B8B70C0022F107 /* ContentView.swift in Sources */,
+				4EAFDF6423B8ED000022F107 /* HistoryView.swift in Sources */,
 				4EAFDF2B23B8B70C0022F107 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
