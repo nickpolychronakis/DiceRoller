@@ -14,42 +14,27 @@ struct DicesView: View {
     let arrayOfDices: [Int]
     
     var body: some View {
-        ZStack {
-            
-            // MARK: Background
-            Rectangle()
-                .fill(Color.green)
-            
-            // MARK: Dice list
-            HStack {
-                ForEach(arrayOfDices, id: \.self) { diceNum in
-                    DiceView(diceNumber: diceNum)
-                    .id(UUID())
-                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .scale))
-                    .animation(Animation.easeInOut.speed(0.2))
-                }
-            }
-            
-            // MARK: Top label
-            VStack {
-                Text("Tap to roll dices")
-                    .font(.largeTitle)
-                    .padding(10)
-                    .frame(height: 50)
-                    .background(Color.black.opacity(0.7))
-                    .foregroundColor(.white)
-                    .cornerRadius(20)
-                    .padding(.top, 20)
-                Spacer()
-            }
-            
-            // MARK: Options button
-            VStack {
+        GeometryReader { geo in
+            ZStack {
+                // MARK: Background
+                Rectangle()
+                    .fill(Color.green)
+                
+                // MARK: Dice list
                 HStack {
-                    Button.init(action: {
-                        print("d")
-                    }) {
-                        Image(systemName: "gear")
+                    ForEach(self.arrayOfDices, id: \.self) { diceNum in
+                        DiceView(diceNumber: diceNum)
+                        // τροποποιώ το frame για να γίνεται το animation απο το κάτω μέρος της οθόνης
+                        .frame(height: geo.size.height)
+                        .id(UUID())
+                        .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .scale))
+                        .animation(Animation.easeOut.speed(0.2))
+                    }
+                }
+                
+                // MARK: Top label
+                VStack {
+                    Text("Tap to roll dices")
                         .font(.largeTitle)
                         .padding(10)
                         .frame(height: 50)
@@ -57,14 +42,31 @@ struct DicesView: View {
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .padding(.top, 20)
-                        .padding(.leading, 10)
+                    Spacer()
+                }
+                
+                // MARK: Options button
+                VStack {
+                    HStack {
+                        Button.init(action: {
+                            print("d")
+                        }) {
+                            Image(systemName: "gear")
+                            .font(.largeTitle)
+                            .padding(10)
+                            .frame(height: 50)
+                            .background(Color.black.opacity(0.7))
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
+                            .padding(.top, 20)
+                            .padding(.leading, 10)
+                        }
+                        Spacer()
                     }
                     Spacer()
                 }
-                Spacer()
             }
         }
-    
     }
 }
 
