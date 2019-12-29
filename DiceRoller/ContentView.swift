@@ -24,7 +24,8 @@ struct ContentView: View {
             DicesView(arrayOfDices: diceArray, numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides)
                 .tabItem {
                     Image(systemName: "dot.square.fill")
-                    Text("Dice")
+                        .imageScale(.large)
+                    Text("Dices")
                 }
                 .tag(0)
                 .onTapGesture(perform: viewIsTapped)
@@ -33,6 +34,7 @@ struct ContentView: View {
             HistoryView(historyArray: $historyArray)
                 .tabItem {
                     Image(systemName: "clock.fill")
+                        .imageScale(.large)
                     Text("History")
                 }
                 .tag(1)
