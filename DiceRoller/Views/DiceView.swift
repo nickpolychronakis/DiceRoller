@@ -28,6 +28,7 @@ struct DiceView: View {
                 Text("\(diceNumber)")
                     .font(.largeTitle)
                     .foregroundColor(.red)
+                    .animation(.none)
             }
         }
     }
