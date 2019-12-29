@@ -16,6 +16,10 @@ struct HistoryView: View {
             Text(self.reduceArray(array))
                 .font(.title)
         }
+        .onAppear {
+            UITableView.appearance().backgroundColor = UIColor.lightGray
+            UITableViewCell.appearance().backgroundColor = UIColor.lightGray
+        }
     }
     
     func reduceArray(_ array: [Int]) -> String {
