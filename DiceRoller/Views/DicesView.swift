@@ -29,9 +29,8 @@ struct DicesView: View {
     /// The history array
     @Binding var historyArray: [[Int]]
     
-    @State private var timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
-    
-    @State private var timerDifference = 0
+    /// The timer difference, counts from 0 each time user taps screen
+    @Binding var timerDifference: Int
     
     // MARK: - BODY
     var body: some View {
@@ -54,9 +53,7 @@ struct DicesView: View {
                         .padding()
                     }
                 }
-                .onReceive(self.timer) { (publisher) in
-                    self.timerDifference += 1
-                }
+
                 
                 // MARK: Top label
                 VStack {
@@ -147,6 +144,6 @@ struct DicesView: View {
 // MARK: - PREVIEW
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
-        DicesView(numberOfDices: .constant(2), numberOfSides: .constant(6), historyArray: .constant([[1,2,3],[4,5,6]]))
+        DicesView(numberOfDices: .constant(2), numberOfSides: .constant(6), historyArray: .constant([[1,2,3],[4,5,6]]), timerDifference: .constant(1))
     }
 }

@@ -22,6 +22,7 @@ struct HistoryView: View {
         }
     }
     
+    /// It formats the array of the dices numbers to a string
     func reduceArray(_ array: [Int]) -> String {
         array.reduce("") { (result, int) -> String in
             return result + (result == "" ? "" : ", ") + "\(int)"

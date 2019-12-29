@@ -13,13 +13,21 @@ struct ContentView: View {
     /// The history array
     @State private var historyArray = [[Int]]()
     
+    // Number of dices and how many sides they will have
     @State private var numberOfDices = 2
     @State private var numberOfSides = 6
+    
+    // Timer publisher
+    @State private var timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
+    
+    /// The timer difference, counts from 0 each time user taps screen
+    @State private var timerDifference = 0
+
         
     var body: some View {
         TabView {
             // MARK: First View
-            DicesView(numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides, historyArray: $historyArray)
+            DicesView(numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides, historyArray: $historyArray, timerDifference: self.$timerDifference)
                 .tabItem {
                     Image(systemName: "dot.square.fill")
                         .imageScale(.large)
@@ -35,6 +43,10 @@ struct ContentView: View {
                     Text("History")
                 }
                 .tag(1)
+        }
+        .onReceive(self.timer) { (publisher) in
+            // MARK: Receive time publisher
+            self.timerDifference += 1
         }
     }
     
