@@ -12,14 +12,18 @@ struct HistoryView: View {
     @Binding var historyArray: [[Int]]
     
     var body: some View {
-        List(historyArray, id: \.self) { array in
-            Text(self.reduceArray(array))
-                .font(.title)
+        VStack {
+            Text("History")
+                .labelFormatter()
+            List(historyArray, id: \.self) { array in
+                Text(self.reduceArray(array))
+                    .font(.title)
+            }
         }
-        .onAppear {
-            UITableView.appearance().backgroundColor = UIColor.lightGray
-            UITableViewCell.appearance().backgroundColor = UIColor.lightGray
-        }
+//        .onAppear {
+//            UITableView.appearance().backgroundColor = UIColor.lightGray
+//            UITableViewCell.appearance().backgroundColor = UIColor.lightGray
+//        }
     }
     
     /// It formats the array of the dices numbers to a string
