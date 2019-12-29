@@ -20,11 +20,13 @@ struct DiceView: View {
     var body: some View {
         VStack {
             ZStack {
+                // MARK: Background
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width:sizeOfDices, height: sizeOfDices)
                     .shadow(radius: 10)
                     .foregroundColor(.white)
 
+                // MARK: Dice number
                 Text("\(diceNumber)")
                     .font(.largeTitle)
                     .foregroundColor(.red)
@@ -34,6 +36,7 @@ struct DiceView: View {
         .rotation3DEffect(.degrees(self.angleOfDice), axis: (x: 1, y: 0, z: 0))
         .animation(Animation.default.speed(0.3))
         .onAppear {
+            // MARK: Rotate dice
             self.angleOfDice += 1080
         }
     }

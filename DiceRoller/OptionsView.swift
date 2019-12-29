@@ -26,7 +26,7 @@ struct OptionsView: View {
 
             VStack(spacing: 10) {
                 
-                // Number of sides
+                //MARK: Number of sides
                 Text("Number Of Sides")
                     .labelFormatter()
                 Picker(selection: $selectedNumberOfSides, label: Text("Sides").fontWeight(.bold)) {
@@ -41,7 +41,7 @@ struct OptionsView: View {
                 .background(Color.black.opacity(0.2))
                 .cornerRadius(30)
 
-                // Number of dices
+                // MARK: Number of dices
                 Text("Number Of Dices")
                     .labelFormatter()
                 Picker.init(selection: $selectedNumberOfDices, label: Text("Dices").fontWeight(.bold)) {
@@ -60,11 +60,11 @@ struct OptionsView: View {
  
             }
             .padding()
-            .onAppear {
+            .onAppear { // load options to View
                 self.selectedNumberOfDices = self.optionsForDices.firstIndex(of: self.numberOfDices) ?? 1
                             self.selectedNumberOfSides = self.optionsForSides.firstIndex(of: self.numberOfSides) ?? 1
             }
-            .onDisappear {
+            .onDisappear { // Save options
                 self.numberOfSides = self.optionsForSides[self.selectedNumberOfSides]
                 self.numberOfDices = self.optionsForDices[self.selectedNumberOfDices]
             }
