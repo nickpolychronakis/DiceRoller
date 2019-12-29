@@ -62,10 +62,30 @@ struct DicesView: View {
                     // MARK: Sheet View
                     OptionsView(numberOfDices: self.$numberOfDices, numberOfSides: self.$numberOfSides)
                 }
+                
+                if self.totalRolled() > 0 {
+                    VStack {
+                        Spacer()
+                        Text("Total: \(self.totalRolled())")
+                        .labelFormatter()
+                            .padding(.bottom, 20)
+                    }
+                }
             }
         }
     }
+    
+    // MARK: - Add the dices
+    // Returns the added number of dices
+    func totalRolled() -> Int {
+        return self.arrayOfDices.reduce(0) { (result, int) in
+            return result + int
+        }
+    }
 }
+
+
+
 
 struct DicesView_Previews: PreviewProvider {
     static var previews: some View {
