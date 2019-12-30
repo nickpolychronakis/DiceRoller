@@ -16,20 +16,9 @@ struct HistoryView: View {
             Text("History")
                 .labelFormatter()
             List(historyArray, id: \.self) { array in
-                Text(self.reduceArray(array))
+                Text(array.map(String.init).joined(separator: ", "))
                     .font(.title)
             }
-        }
-//        .onAppear {
-//            UITableView.appearance().backgroundColor = UIColor.lightGray
-//            UITableViewCell.appearance().backgroundColor = UIColor.lightGray
-//        }
-    }
-    
-    /// It formats the array of the dices numbers to a string
-    func reduceArray(_ array: [Int]) -> String {
-        array.reduce("") { (result, int) -> String in
-            return result + (result == "" ? "" : ", ") + "\(int)"
         }
     }
 }
