@@ -16,7 +16,7 @@ struct HistoryView: View {
             Text("History")
                 .labelFormatter()
             List(historyArray, id: \.self) { array in
-                Text(array.map(String.init).joined(separator: ", "))
+                Text(ListFormatter.localizedString(byJoining: array.map(String.init)))
                     .font(.title)
             }
         }
