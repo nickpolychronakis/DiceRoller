@@ -90,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E11851B23BA987200C2EA6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4EAFDF1C23B8B70C0022F107 = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +125,7 @@
 				4EAFDF2823B8B70C0022F107 /* AppDelegate.swift */,
 				4EAFDF2A23B8B70C0022F107 /* SceneDelegate.swift */,
 				4EDB629623B9160900F4E2DD /* Views */,
-				4EAFDF6123B8E21F0022F107 /* LabelFormatter.swift */,
+				4E11851B23BA987200C2EA6A /* Extensions */,
 				4EAFDF3123B8B70D0022F107 /* Assets.xcassets */,
 				4EAFDF3623B8B70D0022F107 /* LaunchScreen.storyboard */,
 				4EAFDF3923B8B70D0022F107 /* Info.plist */,
